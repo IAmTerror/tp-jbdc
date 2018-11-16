@@ -47,18 +47,27 @@ public class GestionContacts {
         openConnection();
         try {
 
-            // SELECT ------------------------------------------------------------------------------------
-            Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery("select * from articles where art_coul = 'ROUGE'");
+            // SELECT --------------------------------------------------------------------------------------------------
+            Statement statement1 = con.createStatement();
+            ResultSet rs = statement1.executeQuery(
+                    "select * from articles where art_coul = 'ROUGE'");
             while (rs.next()) {
                 String articleNum  = rs.getString(1);
                 String articleNom = rs.getString(2);
                 String articleCouleur = rs.getString("art_coul");
                 System.out.println(articleNum + " - " + articleNom + " - " + articleCouleur);
             }
+            System.out.println("\n");
 
-            //
+            // INSERT --------------------------------------------------------------------------------------------------
+            Statement statement2 = con.createStatement();
+            int nbMaj = statement2.executeUpdate(
+                    "INSERT INTO articles VALUES " +
+                            "('A16','HAND SPINNER','30.000', 'JAUNE', '100', '6', '12', 'F01', '2')");
+            System.out.println("Nombre de mises à jour dans la BDD = " + nbMaj);
+            System.out.println("\n");
 
+            // DELETE --------------------------------------------------------------------------------------------------
 
         } catch (SQLException e) {
             e.printStackTrace();
