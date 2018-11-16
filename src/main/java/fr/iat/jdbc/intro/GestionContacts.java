@@ -14,7 +14,7 @@ import java.util.Properties;
  */
 public class GestionContacts {
 
-    private Connection con;
+    private Connection conn;
 
     private void loadDriver(){
         try {
@@ -33,7 +33,7 @@ public class GestionContacts {
         props.setProperty("user","postgres");
         props.setProperty("password","secret");
         try {
-            this.con = DriverManager.getConnection(url, props);
+            this.conn = DriverManager.getConnection(url, props);
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Base exemple indiponible");
@@ -48,7 +48,7 @@ public class GestionContacts {
         try {
 
             // SELECT --------------------------------------------------------------------------------------------------
-            Statement statement1 = con.createStatement();
+            Statement statement1 = conn.createStatement();
             ResultSet rs = statement1.executeQuery(
                     "select * from articles where art_coul = 'ROUGE'");
             while (rs.next()) {
@@ -60,7 +60,7 @@ public class GestionContacts {
             System.out.println("\n");
 
             // INSERT --------------------------------------------------------------------------------------------------
-//            Statement statement2 = con.createStatement();
+//            Statement statement2 = conn.createStatement();
 //            int nbInsert = statement2.executeUpdate(
 //                    "INSERT INTO articles VALUES " +
 //                            "('A16','HAND SPINNER','30.000', 'JAUNE', '100', '6', '12', 'F01', '2')");
@@ -68,10 +68,16 @@ public class GestionContacts {
 //            System.out.println("\n");
 
             // DELETE --------------------------------------------------------------------------------------------------
-//            Statement statement3 = con.createStatement();
+//            Statement statement3 = conn.createStatement();
 //            int nbDelete = statement3.executeUpdate("DELETE from articles where art_num = 'A16'");
 //            System.out.println("Nombre de suppressions dans la BDD = " + nbDelete);
 //            System.out.println("\n");
+
+            // UPDATE --------------------------------------------------------------------------------------------------
+//            Statement statement4 = conn.createStatement();
+//            int nbUpdate = statement4.executeUpdate(
+//                    "UPDATE articles set art_pv = art_pv / 1.2 where art_coul = 'ROUGE' ");
+//            System.out.println("Nombre d'updates dans la BDD = " + nbUpdate);
 
         } catch (SQLException e) {
             e.printStackTrace();
