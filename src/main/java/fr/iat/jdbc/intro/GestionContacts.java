@@ -60,14 +60,18 @@ public class GestionContacts {
             System.out.println("\n");
 
             // INSERT --------------------------------------------------------------------------------------------------
-            Statement statement2 = con.createStatement();
-            int nbMaj = statement2.executeUpdate(
-                    "INSERT INTO articles VALUES " +
-                            "('A16','HAND SPINNER','30.000', 'JAUNE', '100', '6', '12', 'F01', '2')");
-            System.out.println("Nombre de mises à jour dans la BDD = " + nbMaj);
-            System.out.println("\n");
+//            Statement statement2 = con.createStatement();
+//            int nbInsert = statement2.executeUpdate(
+//                    "INSERT INTO articles VALUES " +
+//                            "('A16','HAND SPINNER','30.000', 'JAUNE', '100', '6', '12', 'F01', '2')");
+//            System.out.println("Nombre d'insertions dans la BDD = " + nbInsert);
+//            System.out.println("\n");
 
             // DELETE --------------------------------------------------------------------------------------------------
+//            Statement statement3 = con.createStatement();
+//            int nbDelete = statement3.executeUpdate("DELETE from articles where art_num = 'A16'");
+//            System.out.println("Nombre de suppressions dans la BDD = " + nbDelete);
+//            System.out.println("\n");
 
         } catch (SQLException e) {
             e.printStackTrace();
