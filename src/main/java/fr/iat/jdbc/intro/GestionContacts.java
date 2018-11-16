@@ -13,7 +13,9 @@ import java.util.Properties;
  * @author student : IAmTerror
  */
 public class GestionContacts {
-    private Connection conn;
+
+    private Connection con;
+
     private void loadDriver(){
         try {
             Class.forName("org.postgresql.Driver");
@@ -31,7 +33,7 @@ public class GestionContacts {
         props.setProperty("user","postgres");
         props.setProperty("password","secret");
         try {
-            this.conn = DriverManager.getConnection(url, props);
+            this.con = DriverManager.getConnection(url, props);
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Base exemple indiponible");
@@ -39,12 +41,23 @@ public class GestionContacts {
         }
     }
 
+
     public void run(){
         loadDriver();
         openConnection();
         try {
 
-            Statement stm = conn.createStatement();
+            // SELECT ------------------------------------------------------------------------------------
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("select * from articles where art_coul = 'ROUGE'");
+            while (rs.next()) {
+                String articleNum  = rs.getString(1);
+                String articleNom = rs.getString(2);
+                String articleCouleur = rs.getString("art_coul");
+                System.out.println(articleNum + " - " + articleNom + " - " + articleCouleur);
+            }
+
+            //
 
 
         } catch (SQLException e) {
